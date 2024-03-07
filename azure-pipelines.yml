@@ -9,10 +9,6 @@ trigger:
 pool: NewPool
 
 steps:
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '11' # Specify the version of Java you want to install
-    jdkArchitectureOption: 'x64'
 
 - task: Gradle@2
   inputs:

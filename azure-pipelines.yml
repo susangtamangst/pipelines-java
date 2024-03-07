@@ -9,13 +9,14 @@ trigger:
 pool: NewPool
 
 steps:
-- task: Maven@3
+- task: JavaToolInstaller@0
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+    versionSpec: '11' # Specify the version of Java you want to install
+
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    options: '-Xmx3072m' # Set JVM options
+    tasks: 'build'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'

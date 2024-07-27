@@ -15,7 +15,7 @@ steps:
     targetType: 'inline'
     script: |      
       mkdir -p $(Build.ArtifactStagingDirectory)
-      'touch $(Build.ArtifactStagingDirectory)/file{1..5}.txt'
+      touch $(Build.ArtifactStagingDirectory)/file{1..5}.txt
   displayName: 'Create files'
 
 - task: PublishBuildArtifacts@1

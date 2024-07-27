@@ -13,12 +13,14 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'touch file{1..5}.txt'
+    script: |
+      mkdir -p files
+      'touch files/file{1..5}.txt'
   displayName: 'Create files'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
+    PathtoPublish: '$(Build.SourcesDirectory)/files'
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish Artifacts'
